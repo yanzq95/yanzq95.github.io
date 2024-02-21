@@ -9,7 +9,7 @@
   <link rel="stylesheet" type="text/css" href="projects.css">
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
-  <link rel="icon" type="image/png" href="../../images/logo.png">
+  <link rel="icon" type="image/png" href="logo.png">
 </head>
 
 <body style="width: 100%;">
@@ -20,17 +20,17 @@
             <br>
             <div id="author-list">
                 <a href="https://scholar.google.com/citations?user=VogTuQkAAAAJ&hl=zh-CN">Zhengxue Wang</a><sup>1</sup>&nbsp;&nbsp;&nbsp;
-                <a href="https://scholar.google.com/citations?user=hnrkzIEAAAAJ&hl=zh-CN&oi=sra">Zhiqiang Yan</a><sup>1</sup>&nbsp;&nbsp;&nbsp;
+                <a href="https://yanzq95.github.io/">Zhiqiang Yan</a><sup>1</sup>&nbsp;&nbsp;&nbsp;
 				<a href="https://faculty.ucmerced.edu/mhyang/">Ming-Hsuan Yang</a><sup>2</sup>&nbsp;&nbsp;&nbsp;
 				<a href="https://jspan.github.io/">Jinshan Pan</a><sup>1</sup>&nbsp;&nbsp;&nbsp;
+				<a href="https://scholar.google.com/citations?user=6CIDtZQAAAAJ&hl=zh-CN">Jian Yang</a><sup>1</sup>&nbsp;&nbsp;&nbsp;
 				<a href="https://tyshiwo.github.io/">Ying Tai</a><sup>3</sup>&nbsp;&nbsp;&nbsp;
-                <a href="https://scholar.google.com/citations?user=6CIDtZQAAAAJ&hl=zh-CN">Jian Yang</a><sup>1</sup>&nbsp;&nbsp;&nbsp;
 				<a href="https://guangweigao.github.io/">Guangwei Gao</a><sup>4</sup>&nbsp;&nbsp;&nbsp;
             </div>
             <div id="institution-list">
                 <sup>1</sup>Nanjing University of Science and Technology&nbsp;&nbsp;&nbsp;
 				<sup>2</sup>University of California at Merced&nbsp;&nbsp;&nbsp;<br>
-				<sup>3</sup>Nanjing University (Suzhou Campus)&nbsp;&nbsp;&nbsp;
+				<sup>3</sup>Nanjing University&nbsp;&nbsp;&nbsp;
 				<sup>4</sup>Nanjing University of Posts and Telecommunications&nbsp;&nbsp;&nbsp;
             </div>
 
@@ -80,7 +80,8 @@
             <div class="root-content" style="padding-top: 10px;">
                 <h1 class="section-name">&#128293; Amazing Depth Super-Resolution Reconstruction &#128293;</h1>
                 <p class="section-content-text">
-                    Our SPFNet achieves prominent super-resolution performance benefits from <strong>All-in-one Prior Propagation</strong>, <strong>One-to-One Prior Embedding</strong>, and <strong>Mutual Guided Filter</strong>. 
+                    <!--Our SPFNet achieves prominent super-resolution performance benefits from <strong>All-in-one Prior Propagation</strong>, <strong>One-to-One Prior Embedding</strong>, and <strong>Mutual Guided Filter</strong>. -->
+					For the first time, SPFNet introduces the priors surface normal and semantic map from large-scale models, addressing the issues of texture interference and edge inaccuracy in GDSR.
                     Here are some typical super-resolution cases.
                 </p>
                 <table style="border: 0px black solid; margin:auto" >
@@ -120,7 +121,7 @@
             <div class="section-content">
             <h1 class="section-name"> Abstract </h1>
                 <p class="section-content-text">
-                    Multi-modal fusion is vital to the success of super-resolution of depth images. However, commonly used fusion strategies, such as addition and concatenation, fall short of effectively bridging the modal gap. As a result, guided image filtering methods have been introduced to mitigate this issue. Nevertheless, it is observed that their filter kernels usually encounter significant texture interference and edge inaccuracy. To tackle these two challenges, we introduce a Scene Prior Filtering network, SPFNet, which utilizes the priors surface normal and semantic map from large-scale models. Specifically, we design an All-in-one Prior Propagation that computes the similarity between multi-modal scene priors, i.e., RGB, normal, semantic, and depth, to reduce the texture interference. In addition, we present a One-to-one Prior Embedding that continuously embeds each single-modal prior into depth using Mutual Guided Filtering, further alleviating the texture interference while enhancing edges. Our SPFNet has been extensively evaluated on both real and synthetic datasets, achieving state-of-the-art performance. The source codes and pre-trained models are available at https://github.com/yanzq95/SPFNet. 
+                    Multi-modal fusion is vital to the success of super-resolution of depth images. However, commonly used fusion strategies, such as addition and concatenation, fall short of effectively bridging the modal gap. As a result, guided image filtering methods have been introduced to mitigate this issue. Nevertheless, it is observed that their filter kernels usually encounter significant texture interference and edge inaccuracy. To tackle these two challenges, we introduce a Scene Prior Filtering network, SPFNet, which utilizes the priors surface normal and semantic map from large scale models. Specifically, we design an All-in-one Prior Propagation that computes the similarity between multi-modal scene priors, i.e., RGB, normal, semantic, and depth, to reduce the texture interference. In addition, we present a One-to-one Prior Embedding that continuously embeds each single-modal prior into depth using Mutual Guided Filtering, further alleviating the texture interference while enhancing edges. Our SPFNet has been extensively evaluated on both real and synthetic datasets, achieving state-of-the-art performance. The source codes and pre-trained models are available at https://github.com/yanzq95/SPFNet. 
                 </p>
             </div>
 
@@ -130,10 +131,12 @@
                 <p class="section-content-text">
                     <strong>SPFNet.</strong> It first produces the normal I<sub>n</sub> and semantic I<sub>s</sub> priors from I<sub>r</sub> using large-scale models. Then, the scene prior branch (orange part) extracts the multi-modal features. Meanwhile, the depth branch (blue part) recursively conducts all-in-one prior propagation (APP) and one-to-one prior embedding (OPE). BI: bicubic interpolation.
                 </p>
+				<img src="line.png" width="700"/><br><br>
 				<img src="APP.png" width="1000"/>
                 <p class="section-content-text">
                     Scheme of (a) <strong>All-in-one Prior Propagation (APP)</strong>, and (b) histogram comparison of scene prior features before and after APP.
                 </p>
+				<img src="line.png" width="700"/><br><br>
 				<img src="OPE.png" width="1000"/>
                 <p class="section-content-text">
                     Scheme of (a) <strong>One-to-one Prior Embedding (OPE)</strong>, and (b) gradient histogram of filter kernels in the texture area (green box). The surface normal, semantic, and RGB kernels are generated by our <strong>Mutual Guided Filtering (MGF)</strong>.
@@ -154,23 +157,28 @@
                 <img src="Result_NYU.png" width="1000"/>
 				<p align="center">
                     Visual results and error maps on  NYU-v2 dataset (x16).
-                </p><br>
+                </p>
+				<img src="line.png" width="700"/><br><br>
                 <img src="Result_RGBDD.png" width="1000"/>
 				<p align="center">
                     Visual results and error maps on RGB-D-D dataset (x16).
-                </p><br>
+                </p>
+				<img src="line.png" width="700"/><br><br>
                 <img src="Result_Lu.png" width="1000"/>
 				<p align="center">
                     Visual results and error maps on Lu dataset (x16).
-                </p><br>
+                </p>
+				<img src="line.png" width="700"/><br><br>
                 <img src="Result_Midd.png" width="1000"/>
 				<p align="center">
                     Visual results and error maps on Middlebury dataset (x16).
-                </p><br>
+                </p>
+				<img src="line.png" width="700"/><br><br>
                 <img src="Result_RGBDD_Real.png" width="1000"/>
 				<p align="center">
                     Visual results on real-world RGB-D-D dataset.
-                </p><br>
+                </p>
+				<img src="line.png" width="700"/><br><br>
                 <img src="Result_Midd_Denoising.png" width="1000"/>
 				<p align="center">
                     Visual results of joint DSR and denoising on NYU-v2 and Middlebury (x16).
@@ -199,7 +207,7 @@
                     Contact
                 </h1>
                 <p class="section-content-text">
-                    For any questions, please contact <strong>zxwang@njust.edu.cn</strong>
+                    For any questions, please contact <strong>{zxwang,yanzq}@njust.edu.cn</strong>
                 </p>
             </div>
         </div>
@@ -210,7 +218,7 @@
             <p>Visitor Count</p>
         </div> -->
         <div style="background-color: #f5f5f5; margin-right: auto; margin-left: auto; text-align: center; padding-top: 35px; padding-bottom: 35px;">
-            <p><font face="Arial"> &copy; Zhengxue Wang | Last updated: Feb. 2024</font></p>
+            <p><font face="Arial"> &copy; Zhengxue Wang, Zhiqiang Yan | Last updated: Feb. 2024</font></p>
         </div>
     </div>
 </body>
