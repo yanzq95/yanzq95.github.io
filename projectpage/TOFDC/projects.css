@@ -6,7 +6,7 @@ body{
 h1 {
 	font-family: 'Times New Roman';
 	font-size: 31px;
-    border-bottom: 1px solid lightgrey; /* 设置横线样式 */
+    border-bottom: 1px solid lightgrey; 
 	padding-bottom: 5px;
 }
 
