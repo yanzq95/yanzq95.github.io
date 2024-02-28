@@ -3,6 +3,7 @@ body{
     border: 0;
 }
 
+
 body,
 td,
 th,
@@ -98,7 +99,7 @@ svg:not(:root).svg-inline--fa{
 }
 
 .section-content-text{
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Times New Roman';
     text-align: justify;
     font-size: 17px;
     letter-spacing: 0.3px;
