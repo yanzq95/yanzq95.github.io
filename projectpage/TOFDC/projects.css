@@ -3,6 +3,12 @@ body{
     border: 0;
 }
 
+h1 {
+	font-family: 'Times New Roman';
+	font-size: 31px;
+    border-bottom: 1px solid lightgrey; /* 设置横线样式 */
+	padding-bottom: 5px;
+}
 
 body,
 td,
@@ -41,7 +47,7 @@ name {
     font-family: 'Google Sans', sans-serif;
     font-size: 40px;
     font-weight: 600;
-    color: #363636;
+    /*color: #363636;*/
 }
 
 #author-list{
