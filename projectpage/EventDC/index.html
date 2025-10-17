@@ -1,0 +1,303 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+  <title>TOFDC DATASET</title>
+  
+  <meta name="author" content="Zhiqiang Yan">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" type="text/css" href="projects.css">
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+  <link rel="icon" type="image/png" href="logo.png">
+</head>
+
+<body style="width: 100%; margin: 0 auto;">
+    <div style="width: 100%; margin: 0 auto;">
+        <!-- Title -->
+        <div class="root-content" style="padding-top: 30px;">
+            <name>TOFDC and TOFDSR DATASETs</name>
+            <br>
+            <div>
+				<h3 align="center">PCA Lab, Nanjing University of Science and Technology</h3>
+            </div>
+        </div>
+		
+        
+
+
+        <!-- Paper Information -->
+        <div class="root-content" style="padding-top: 5px;">
+            <div style="width: 80%;  margin: 0 auto;">
+            <h1 align="left"> Overview </h1>
+                <p class="section-content-text">
+                    The TOFDC dataset is collected by the time-of-flight (TOF) sensor and RGB camera of a Huawei P30 Pro. The ground truth depth maps are captured by the Helios TOF camera. This dataset covers various scenes such as texture, flower, body, and toy, under different lighting conditions and in open space. It has 10k 512×384 RGB-D pairs for training and 560 pairs for evaluation.  
+                </p>
+					<div align="center">
+						<img src="TOFDC_statistic_scene.png" width="550"/>
+					</div>
+					<br>
+					Fig.1 Distribution of different scenarios in our TOFDC.
+            </div>
+			
+            <div style="width: 80%;  margin: 0 auto;">
+            <h1 align="left"> Split </h1>
+                <p class="section-content-text">
+                    Train: 10,000 (RGB + sparse depth + GT depth)
+		<br>
+		Test: 560 &nbsp; &nbsp; &nbsp; (RGB + sparse depth + GT depth)
+		<br>
+			<strong>Data folder:</strong>
+		<br>
+		    -test
+			<br>
+			&nbsp; &nbsp; &nbsp; &nbsp; -rgb
+			<br>
+			&nbsp; &nbsp; &nbsp; &nbsp; -tgv_gt
+			<br>
+			&nbsp; &nbsp; &nbsp; &nbsp; -tof
+			<br>
+			-train
+			<br>
+			&nbsp; &nbsp; &nbsp; &nbsp; -1_texture
+						<br>
+			&nbsp; &nbsp; &nbsp; &nbsp; -2_flower
+						<br>
+			&nbsp; &nbsp; &nbsp; &nbsp; -3_openspace
+						<br>
+			&nbsp; &nbsp; &nbsp; &nbsp; -4_light
+						<br>
+			&nbsp; &nbsp; &nbsp; &nbsp; -5_Video
+		    <br>
+                </p>
+            </div>
+			
+            <div style="width: 80%;  margin: 0 auto;">
+            <h1 align="left"> Experiments </h1>
+			<p class="section-content-text">
+				
+				<div align="center">
+					<img src="TOFDC_vis.png" width="650"/>
+				</div>
+				<br>
+				Fig.3 Visual results of RigNet and TPVD on TOFDC.
+				
+			</p>
+            </div>		
+
+            <div style="width: 80%;  margin: 0 auto;">
+            <h1 align="left"> Copyright </h1>
+                <p class="section-content-text">
+                The TOFDC dataset is exclusively available for academic purposes. Any researcher utilizing the TOFDC dataset is required to adhere to the following license:
+			<br>
+			<br>
+                <strong>1.</strong> This dataset is strictly for non-commercial use. 
+			<br>
+	        <strong>2.</strong> The entirety of the TOFDC dataset is copyrighted by the PCA Lab at Nanjing University of Science and Technology. 
+		This stipulates that unsers must credit the work in the manner delineated by the authors. 
+			<br>
+		<strong>3.</strong> If users modify, adapt, or build upon this work, they may distribute the resulting work solely under an identical license.
+                </p>
+            </div>	
+
+            <div style="width: 80%;  margin: 0 auto;">
+            <h1 align="left"> Download </h1>
+                <p class="section-content-text">
+			<br>
+			To facilitate research, we offer direct access to the data download source, eliminating the need for applications. However, we kindly request that users adhere to the license stipulated above.
+			<br>
+					<br>
+					Camera intrinsics (3648*2736): fx=2828.5, cx=1816, fy=2837.9, cy=1394.9
+					<br>
+					<br>
+					Camera intrinsics (512*384): fx=396.9825, cx=254.8772, fy=398.3018, cy=195.7754
+					<br>
+			<br>
+			Note that the depth maps of TOFDC are measured in millimeters (mm).
+			<br>
+			<br>
+			<a href="https://pan.baidu.com/s/138kLmw6Djvs9-91amdPkAA">Baidu Disk</a> (nust)
+			<br>
+			<a href="https://drive.google.com/file/d/1K-qOQX5dnNavdyJQrniM2GrJhxGkBcbx/view?usp=sharing">Google Drive</a>
+			<br>
+			<br>
+			TOFDSR for depth super-resolution:
+			<br>
+			<br>
+			<a href="https://pan.baidu.com/s/105z6ppzzxH7aC81AUjfwIA?pwd=nust">Baidu Disk</a> (nust)
+			<br>
+			<a href="https://drive.google.com/file/d/1iQEtPBVIA8pmYeSh6YKH93CsJWik1EJz/view?usp=drive_link">Google Drive</a>
+			<br>
+			<br>
+			In addition, if you use our dataset, please cite:
+                </p>
+            </div>			
+
+
+            <div style="width: 80%;  margin: 0 auto;">
+                <h1 align="left">
+                    Citation
+                </h1>
+                <a name="bib"></a>
+                <pre style="margin-top: 5px;" class="bibtex">
+                    <code>
+@inproceedings{yan2024tri,
+  title={Tri-Perspective View Decomposition for Geometry-Aware Depth Completion},
+  author={Yan, Zhiqiang and Lin, Yuankai and Wang, Kun and Zheng, Yupeng and Wang, Yufei and Zhang, Zhenyu and Li, Jun and Yang, Jian},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={4874--4884},
+  year={2024}
+}
+</code></pre>
+            </div >
+			
+            <div style="margin-bottom: 50px; width: 80%;  margin: 0 auto;">
+                <h1 align="left">
+                    Contact
+                </h1>
+                <p class="section-content-text">
+                    For any questions, please contact <strong>yanzq@njust.edu.cn</strong>
+                </p>
+            </div>
+        </div>
+
+
+        <!-- <div style="background-color: #f5f5f5; margin-right: auto; margin-left: auto; text-align: center; padding-top: 35px; padding-bottom: 35px;">
+            <a href="https://www.freecounterstat.com" title="web page counter"><img src="https://counter4.optistats.ovh/private/freecounterstat.php?c=xdafgsksdt68ssg1n7kfmr61ul4ugbb6" border="0" title="web page counter" alt="web page counter"></a>
+            <p>Visitor Count</p>
+        </div> -->
+        <div style="background-color: #f5f5f5; margin-right: auto; margin-left: auto; text-align: center; padding-top: 35px; padding-bottom: 35px;">
+            <p><font face="Arial"> &copy; Zhengxue Wang, Zhiqiang Yan | Last updated: April 2024</font></p>
+        </div>
+    </div>
+</body>
+
+
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$']]},
+        messageStyle: "none"
+    });
+</script>
+
+
+
+<!-- juxtapose_images -->
+<script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+<link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+
+<script>
+    slider = new juxtapose.JXSlider('#jt1',
+        [
+            {src: 'juxtapose_images/Lu_1_left.png'},
+            {src: 'juxtapose_images/Lu_1_right.png'}
+        ],
+        {
+            animate: true,
+            showLabels: false,
+            showCredits: false,
+            startingPosition: "50%",
+            makeResponsive: true
+        });
+</script>
+<script>
+    slider = new juxtapose.JXSlider('#jt2',
+        [
+            {src: 'juxtapose_images/Lu_2_left.png'},
+            {src: 'juxtapose_images/Lu_2_right.png'}
+        ],
+        {
+            animate: true,
+            showLabels: false,
+            showCredits: false,
+            startingPosition: "50%",
+            makeResponsive: true
+        });
+</script>
+<script>
+    slider = new juxtapose.JXSlider('#jt3',
+        [
+            {src: 'juxtapose_images/Midd_1_left.png'},
+            {src: 'juxtapose_images/Midd_1_right.png'}
+        ],
+        {
+            animate: true,
+            showLabels: false,
+            showCredits: false,
+            startingPosition: "50%",
+            makeResponsive: true
+        });
+</script>
+<script>
+    slider = new juxtapose.JXSlider('#jt4',
+        [
+            {src: 'juxtapose_images/Midd_2_left.png'},
+            {src: 'juxtapose_images/Midd_2_right.png'}
+        ],
+        {
+            animate: true,
+            showLabels: false,
+            showCredits: false,
+            startingPosition: "50%",
+            makeResponsive: true
+        });
+</script>
+<script>
+    slider = new juxtapose.JXSlider('#jt5',
+        [
+            {src: 'juxtapose_images/NYU_1_left.png'},
+            {src: 'juxtapose_images/NYU_1_right.png'}
+        ],
+        {
+            animate: true,
+            showLabels: false,
+            showCredits: false,
+            startingPosition: "50%",
+            makeResponsive: true
+        });
+</script>
+<script>
+    slider = new juxtapose.JXSlider('#jt6',
+        [
+            {src: 'juxtapose_images/NYU_2_left.png'},
+            {src: 'juxtapose_images/NYU_2_right.png'}
+        ],
+        {
+            animate: true,
+            showLabels: false,
+            showCredits: false,
+            startingPosition: "50%",
+            makeResponsive: true
+        });
+</script>
+<script>
+    slider = new juxtapose.JXSlider('#jt7',
+        [
+            {src: 'juxtapose_images/RGBDD_1_left.png'},
+            {src: 'juxtapose_images/RGBDD_1_right.png'}
+        ],
+        {
+            animate: true,
+            showLabels: false,
+            showCredits: false,
+            startingPosition: "50%",
+            makeResponsive: true
+        });
+</script>
+<script>
+    slider = new juxtapose.JXSlider('#jt8',
+        [
+            {src: 'juxtapose_images/RGBDD_2_left.png'},
+            {src: 'juxtapose_images/RGBDD_2_right.png'}
+        ],
+        {
+            animate: true,
+            showLabels: false,
+            showCredits: false,
+            startingPosition: "50%",
+            makeResponsive: true
+        });
+</script>
