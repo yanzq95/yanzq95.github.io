@@ -19,7 +19,7 @@
             <name>Event-based Depth Completion Datasets</name>
             <br>
             <div>
-				<h3 align="center">CVRP Lab, National University of Singapore</h3>
+				<h3 align="center">NUS, UCL, NJUST</h3>
             </div>
         </div>
 		
@@ -31,13 +31,17 @@
             <div style="width: 80%;  margin: 0 auto;">
             <h1 align="left"> Overview </h1>
                 <p class="section-content-text">
-                    The TOFDC dataset is collected by the time-of-flight (TOF) sensor and RGB camera of a Huawei P30 Pro. The ground truth depth maps are captured by the Helios TOF camera. This dataset covers various scenes such as texture, flower, body, and toy, under different lighting conditions and in open space. It has 10k 512×384 RGB-D pairs for training and 560 pairs for evaluation.  
+Tab.1 provides an overview of the sensors used in the datasets with their respective specifications. 
+EventDC-Real is a real-world dataset in which color images and event frames are captured using the FLIR BFS-U3-31S4C camera and the DAVIS346 sensor, respectively. The ground truth (GT) depth is acquired from a 128-line Ouster LiDAR, and the sparse depth is derived from its 16 sub-lines. 
+EventDC-SemiSyn is a semi-synthetic dataset based on KITTI. The sparse depth and GT depth come from the raw data of KITTI. For the color images, we apply radial motion blur by progressively scaling and transforming the image around its center to simulate a motion blur effect with adjustable strength and step count. Additionally, VID2E is used to generate the event data with frames captured within 15 ms before and after the current timestamp. 
+EventDC-FullSyn is a fully synthetic dataset generated using the CARLA simulator. The color images are processed similarly with radial motion blur. 
+Finally, to facilitate model training, the resolution of all datasets has been cropped to multiples of 32.
                 </p>
 					<div align="center">
-						<img src="TOFDC_statistic_scene.png" width="550"/>
+						<img src="EventDC_sta.png" width="550"/>
 					</div>
 					<br>
-					Fig.1 Distribution of different scenarios in our TOFDC.
+					Visual cases of our EventDC benchmark.
             </div>
 			
             <div style="width: 80%;  margin: 0 auto;">
