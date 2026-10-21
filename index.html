@@ -15,6 +15,39 @@
 .justify-text {
   text-align: justify;
 }
+details.pub-fold > summary {
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+  margin: 0 20px;
+  padding: 10px 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #f7f7f7;
+  font-weight: bold;
+  color: #1772d0;
+}
+details.pub-fold > summary::-webkit-details-marker {
+  display: none;
+}
+details.pub-fold > summary:hover {
+  background: #eef4fb;
+}
+details.pub-fold > summary .arrow {
+  display: inline-block;
+  transition: transform 0.2s;
+  margin-right: 6px;
+}
+details.pub-fold[open] > summary .arrow {
+  transform: rotate(90deg);
+}
+details.pub-fold > summary .when-open,
+details.pub-fold[open] > summary .when-closed {
+  display: none;
+}
+details.pub-fold[open] > summary .when-open {
+  display: inline;
+}
 </style>
 </head>
 
@@ -78,6 +111,14 @@
           </table>
 
 
+          <details class="pub-fold" id="pubs">
+            <summary>
+              <span class="arrow">&#9654;</span>
+              Publications (<span id="pub-count"></span>)
+              <span class="when-closed">&mdash; click to expand</span>
+              <span class="when-open">&mdash; click to collapse</span>
+            </summary>
+
           <table
             style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             <tbody>
@@ -111,7 +152,8 @@
                 </td>
               </tr>
 
-		
+            </tbody>
+          </table>
 
 				<table
             style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
@@ -283,7 +325,9 @@
 			  </p>
                 </td>
               </tr>
-		
+
+            </tbody>
+          </table>
 
 	<table
             style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
@@ -465,7 +509,8 @@
                 </td>
               </tr>
 
-		
+            </tbody>
+          </table>
 
           <table
             style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
@@ -1077,6 +1122,7 @@
 
             </tbody>
           </table>
+          </details>
 		
 
           <table
@@ -1124,7 +1170,23 @@
               </tr>
             </tbody>
           </table>
-		
+
+
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr>
+                <td style="padding:20px;width:100%;vertical-align:middle">
+                  <heading>Visitors</heading>
+                  <div style="margin-top:12px;text-align:center;">
+                    <script type="text/javascript" id="mapmyvisitors"
+                      src="//mapmyvisitors.com/map.js?d=vp61HV23mCnA5lWf2CrXC6WpRke7zi3gbvpM4eFHlxQ&cl=080808&w=a&t=n&co=ffffff&ct=808080&cmo=ff0000&cmn=ff0000"></script>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
 
           <table
             style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
@@ -1142,6 +1204,10 @@
         </td>
       </tr>
   </table>
+  <script>
+    document.getElementById("pub-count").textContent =
+      document.querySelectorAll("#pubs papertitle").length;
+  </script>
 </body>
 
 </html>
