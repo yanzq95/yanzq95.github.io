@@ -1,0 +1,220 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ShoWorld: Shape-Faithful Multi-Hypothesis Occupancy World Model</title>
+  <meta name="author" content="Zhiqiang Yan">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="projects.css">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="logo.png">
+  <style>
+    body, p, a, td, h1, h2, h3, div { font-family: 'Google Sans', 'Noto Sans', 'Segoe UI', Arial, sans-serif; }
+    .wrap { width: 1060px; max-width: calc(100% - 32px); margin: 0 auto; }
+    .band { background: #f5f6f8; }
+    .header { text-align: center; padding: 44px 0 34px 0; }
+    .header name { font-size: 38px; line-height: 1.25; }
+    #button-list { margin: 26px 0 0 0; }
+    .section { padding: 44px 0 8px 0; }
+    .section h1 { color: #363636; font-size: 30px; text-align: center; margin: 0 0 18px 0; }
+    .text { font-family: 'Noto Sans', 'Segoe UI', Arial, sans-serif; font-size: 16.5px; line-height: 1.65; color: #333;
+            text-align: justify; max-width: 900px; margin: 0 auto; }
+    .caption { font-size: 15px; line-height: 1.55; color: #555; text-align: justify; text-align-last: left; max-width: 900px; margin: 12px auto 0 auto; }
+    .figure { display: block; width: 100%; max-width: 900px; height: auto; margin: 0 auto; border-radius: 6px; }
+    .viewer .figure { max-width: 872px; }
+    .teaser { padding: 34px 0 30px 0; }
+    .teaser .tagline { font-size: 21px; color: #363636; text-align: center; margin: 0 0 16px 0; }
+    .cards { display: flex; gap: 18px; max-width: 900px; margin: 30px auto 0 auto; }
+    .card { flex: 1; background: #fff; border: 1px solid #e3e6ea; border-radius: 10px; padding: 18px 20px; }
+    .card h3 { margin: 0 0 8px 0; font-size: 18px; color: #1772d0; }
+    .card p { margin: 0; font-size: 15px; line-height: 1.55; color: #444; }
+    .card .big { font-size: 26px; font-weight: 700; color: #1a1a1a; }
+    .legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 16px; margin: 12px auto 0 auto;
+              font-size: 14px; color: #444; }
+    .legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .legend i { width: 13px; height: 13px; border-radius: 3px; display: inline-block; border: 1px solid rgba(0,0,0,.2); }
+    .legend .outline i { background: #fff; border: 2px solid #000; border-radius: 2px; }
+    .tabs { display: flex; justify-content: center; gap: 10px; margin: 6px 0 12px 0; flex-wrap: wrap; }
+    .tab, .scene { border: 1px solid #c9ced6; background: #fff; color: #333; border-radius: 999px; padding: 7px 18px;
+                   font-size: 15px; cursor: pointer; }
+    .tab.active { background: #363636; color: #fff; border-color: #363636; }
+    .scene { padding: 5px 14px; font-size: 14px; }
+    .scene.active { background: #1772d0; color: #fff; border-color: #1772d0; }
+    .viewer { background: #fff; border: 1px solid #e3e6ea; border-radius: 10px; padding: 13px; max-width: 872px; margin: 0 auto; }
+    .bibtex { border-radius: 8px; font-size: 14.5px; max-width: 870px; margin: 0 auto; }
+    .footer { text-align: center; color: #666; font-size: 14px; padding: 30px 0; margin-top: 40px; }
+    @media (max-width: 760px) { .cards { flex-direction: column; } .header name { font-size: 28px; } }
+  </style>
+</head>
+
+<body>
+  <!-- Title -->
+  <div class="wrap header">
+    <name>ShoWorld: Shape-Faithful Multi-Hypothesis<br>Occupancy World Model</name>
+    <div id="author-list">
+      <a href="https://yanzq95.github.io/">Zhiqiang Yan</a><sup>1</sup>&nbsp;&nbsp;&nbsp;
+      Guangfa Wang<sup>2</sup>&nbsp;&nbsp;&nbsp;
+      <a href="https://rayn-wu.github.io/">Yuan Wu</a><sup>2</sup>&nbsp;&nbsp;&nbsp;
+      <a href="https://scholar.google.com/citations?user=6CIDtZQAAAAJ&hl=zh-CN">Jian Yang</a><sup>2</sup>&nbsp;&nbsp;&nbsp;
+      <a href="https://www.comp.nus.edu.sg/~leegh/">Gim Hee Lee</a><sup>1</sup>
+    </div>
+    <div id="institution-list">
+      <sup>1</sup>National University of Singapore&nbsp;&nbsp;&nbsp;
+      <sup>2</sup>Nanjing University of Science and Technology
+    </div>
+    <div id="button-list">
+      <span class="link-button">
+        <a class="link-button-content" href="https://arxiv.org/pdf/2611.24457" target="_blank">
+          <svg class="svg-inline--fa fa-w-12" style="position: relative; top: 0.15em;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z"></path></svg>
+          &nbsp;Paper
+        </a>
+      </span>
+      <span class="link-button">
+        <a class="link-button-content" href="#bib">
+          <svg aria-hidden="true" style="position: relative; top: 0.15em;" width="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5V4zm2-1a1 1 0 0 0-1 1v10.566l3.723-2.482a.5.5 0 0 1 .554 0L11 14.566V4a1 1 0 0 0-1-1H4z"></path><path fill="currentColor" fill-rule="evenodd" d="M4.268 1H12a1 1 0 0 1 1 1v11.768l.223.148A.5.5 0 0 0 14 13.5V2a2 2 0 0 0-2-2H6a2 2 0 0 0-1.732 1z"></path></svg>
+          &nbsp;BibTex
+        </a>
+      </span>
+    </div>
+  </div>
+
+  <!-- Teaser -->
+  <div class="band">
+    <div class="wrap teaser">
+      <p class="tagline">Forecasting <strong>where</strong> moving objects go and <strong>what</strong> they look like</p>
+      <img class="figure" src="demo_1334_8s.gif" alt="8 s forecast on Occ3D-nuScenes: ground truth, COME, ShoWorld">
+      <p class="caption">
+        8&nbsp;s forecast on the Occ3D-nuScenes validation set (3D occupancy input, ground-truth ego trajectory).
+        Top: full scene in 3D. Bottom: bird's-eye view zoomed on the moving objects, with the ground-truth objects outlined in black.
+      </p>
+      <div class="cards">
+        <div class="card">
+          <h3>Multi-hypothesis motion</h3>
+          <p>Each object predicts several trajectories with probabilities from the scene layout, nearby agents and the ego trajectory. Every hypothesis is rendered and fused by its probability, so alternative futures are kept instead of averaged.</p>
+        </div>
+        <div class="card">
+          <h3>Shape-faithful objects</h3>
+          <p>Objects are represented by sub-voxel points inferred from local geometry and moved rigidly. Any-hit rendering keeps their extent under arbitrary motion instead of eroding or inflating it at every re-voxelization.</p>
+        </div>
+        <div class="card">
+          <h3>State of the art</h3>
+          <p><span class="big">+6.56</span> mIoU and <span class="big">+9.16</span> IoU over the previous best on Occ3D-nuScenes (3D occupancy input, GT ego trajectory), and +6.06 / +5.53 on dynamic classes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Abstract -->
+  <div class="wrap section">
+    <h1>Abstract</h1>
+    <p class="text">
+      Occupancy world models struggle to forecast moving objects due to motion uncertainty and shape distortion.
+      A single trajectory can average plausible futures into an implausible path, and repeated re-voxelization can erode or inflate object shape even under correct motion.
+      We introduce ShoWorld to address these challenges through separate motion and shape representations.
+      The motion forecaster predicts probabilistic trajectories conditioned on scene layout, nearby agents and the future ego trajectory.
+      Each hypothesis is rendered into occupancy and fused according to its probability to retain alternative futures.
+      The shape component predicts sub-voxel points with occupancy probabilities and offsets from local geometry.
+      These points move rigidly with the object, and voxel occupancy follows the probability that at least one occupied point falls within it.
+      This representation reduces shape distortion under motion.
+      ShoWorld achieves state-of-the-art results on Occ3D-nuScenes.
+      With ground-truth occupancy and ego trajectory, it improves mIoU and IoU by 6.56 and 9.16 points overall and by 6.06 and 5.53 points on dynamic classes.
+    </p>
+  </div>
+
+  <!-- Motivation -->
+  <div class="wrap section">
+    <h1>Motivation</h1>
+    <img class="figure" src="Concept.png" alt="Motion uncertainty and shape preservation">
+    <p class="caption">
+      <strong>Motion uncertainty and shape preservation.</strong>
+      (a) Voxel-wise supervision can pull a single trajectory between plausible futures; our fusion retains each hypothesis with its probability.
+      (b) Re-voxelization of rotated voxel centers leaves holes; sub-voxel points keep the shape covered (offsets illustrated).
+    </p>
+  </div>
+
+  <!-- Method -->
+  <div class="wrap section">
+    <h1>Methodology</h1>
+    <img class="figure" src="Overview.png" alt="Overview of ShoWorld">
+    <p class="caption">
+      <strong>Overview of ShoWorld.</strong> The scene is decomposed into a static background and rigid objects grouped from the current occupancy.
+      Each object predicts K trajectories with probabilities from the layout, nearby agents, and the ego vehicle.
+      Its sub-voxel points, inferred once from local geometry, are rendered under every hypothesis, fused by the probabilities, and composited over the background.
+    </p>
+  </div>
+
+  <!-- Visual comparison -->
+  <div class="wrap section">
+    <h1>Visual Comparison</h1>
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-set="8s">8&nbsp;s forecasting vs. COME</button>
+      <button class="tab" data-set="3s">3&nbsp;s forecasting vs. I&sup2;-World</button>
+    </div>
+    <div class="tabs" id="scenes"></div>
+    <div class="viewer"><img class="figure" id="viewer" src="demo_2253_8s.gif" alt="comparison"></div>
+    <div class="legend">
+      <span><i style="background:#0096f5"></i>car</span>
+      <span><i style="background:#a020f0"></i>truck</span>
+      <span><i style="background:#ffff00"></i>bus</span>
+      <span><i style="background:#873c00"></i>trailer</span>
+      <span><i style="background:#00ffff"></i>construction vehicle</span>
+      <span><i style="background:#ff0000"></i>pedestrian</span>
+      <span><i style="background:#ffc0cb"></i>bicycle</span>
+      <span><i style="background:#c8b400"></i>motorcycle</span>
+      <span class="outline"><i></i>ground-truth object outline</span>
+    </div>
+    <p class="caption">
+      Validation set, 3D occupancy input with the ground-truth ego trajectory. Columns: ground truth, the compared method, ShoWorld.
+      Top: full scene in 3D (Occ3D colors). Bottom: bird's-eye view zoomed on the moving objects, static scene in gray, with the
+      dynamic-class IoU of each frame. Scenes were selected to show clear differences between the methods.
+    </p>
+  </div>
+
+  <!-- BibTeX -->
+  <div class="wrap section">
+    <h1 id="bib">BibTeX</h1>
+    <pre class="bibtex"><code>@article{yan2026showorld,
+  title={ShoWorld: Shape-Faithful Multi-Hypothesis Occupancy World Model},
+  author={Yan, Zhiqiang and Wang, Guangfa and Wu, Yuan and Yang, Jian and Lee, Gim Hee},
+  journal={arXiv preprint arXiv:2611.24457},
+  year={2026}
+}</code></pre>
+    <p class="text" style="text-align:center; margin-top: 18px;">For any questions, please contact <strong>yanzq@nus.edu.sg</strong></p>
+  </div>
+
+  <div class="band footer">&copy; Zhiqiang Yan | Last updated: Nov. 2026</div>
+
+  <script>
+    var sets = {
+      '8s': [['Scene 1', 'demo_2253_8s.gif'], ['Scene 2', 'demo_1334_8s.gif'], ['Scene 3', 'demo_373_8s.gif'],
+             ['Scene 4', 'demo_806_8s.gif']],
+      '3s': [['Scene 1', 'demo_3876_3s.gif']]
+    };
+    var viewer = document.getElementById('viewer'), scenes = document.getElementById('scenes');
+    function show(set) {
+      scenes.innerHTML = '';
+      sets[set].forEach(function (item, k) {
+        var b = document.createElement('button');
+        b.className = 'scene' + (k === 0 ? ' active' : '');
+        b.textContent = item[0];
+        b.onclick = function () {
+          Array.prototype.forEach.call(scenes.children, function (c) { c.classList.remove('active'); });
+          b.classList.add('active');
+          viewer.src = item[1];
+        };
+        scenes.appendChild(b);
+      });
+      scenes.style.display = sets[set].length > 1 ? 'flex' : 'none';
+      viewer.src = sets[set][0][1];
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('#tabs .tab'), function (t) {
+      t.onclick = function () {
+        Array.prototype.forEach.call(document.querySelectorAll('#tabs .tab'), function (o) { o.classList.remove('active'); });
+        t.classList.add('active');
+        show(t.dataset.set);
+      };
+    });
+    show('8s');
+  </script>
+</body>
+</html>
